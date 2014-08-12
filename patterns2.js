@@ -114,7 +114,7 @@ function outer(a, b) {
 var fff = outer(2, 1);
 console.log(fff().r);
 
-//实际上，传的是i的引用
+//实际上，  传的是i的引用
 function wrapElements(a) {
     var result = []
     for (var i = 0, n = a.length; i < n; i++) {
