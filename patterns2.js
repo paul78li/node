@@ -266,7 +266,7 @@ function values() {
     var i = 0, n = arguments.length, a = arguments
     return{
         hasNext: function () {
-            return i < n;
+            return i < n
         },
         next: function () {
             if (i >= n) {
@@ -281,10 +281,22 @@ while (it.hasNext()) {
     console.log(it.next())
 }
 
-
 //=============================================
-
-
+var buffer = {
+    entries : [],
+    add : function(s){
+        this.entries.push(s)
+    },
+    join: function(){
+        return this.entries.join('')
+    }
+}
+var source = ['a','-','1']
+//并不是每个高阶函数都会提供其回调函数的接收者，即下面注释的语句，forEach提供了接收者，如果某个高阶函数没有提供接收者，那么用注释语句的后面一条语句 bind()
+//source.forEach(buffer.add,buffer)
+source.forEach(buffer.add.bind(buffer))
+var ret = buffer.join()
+console.log(ret)
 //=============================================
 
 
