@@ -214,3 +214,21 @@ var randomStr = buildStr(10,function(i){
     return String.fromCharCode(Math.floor(Math.random()*26)+aCode)
 })
 console.log(randomStr)
+
+
+// apply()和call()的真正用武之地是能够扩充函数赖以运行的作用域
+this.firstName = "diz";
+this.lastName = "song";
+var myObject = { firstName: "my", lastName: "Object" };
+function HelloName() {
+    console.log("Hello " + this.firstName + " " + this.lastName, " glad to meet you!");
+}
+HelloName.call(this); //
+HelloName.call(myObject);
+
+
+function sum(num1, num2) {
+    return num1 + num2;
+}
+console.log(sum.call(null, 10, 10)); //20
+console.log(sum.apply(null,[10,20])); //30
