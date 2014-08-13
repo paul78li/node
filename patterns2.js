@@ -113,7 +113,7 @@ function outer(a, b) {
 }
 var fff = outer(2, 1);
 console.log(fff().r);
-
+//=============================================
 //实际上， 传的是i的引用
 function wrapElements(a) {
     var result = []
@@ -146,7 +146,7 @@ function wrapElementsRight(a) {
 var wrappedRight = wrapElementsRight([1, 2, 3])
 var elem0Right = wrappedRight[0]
 console.log(elem0Right())
-
+//=============================================
 var obj1 = {
     hello: function () {
         return "hello " + this.username;
@@ -159,7 +159,7 @@ var obj2 = {
     username: "ni"
 }
 console.log(obj2.hello());
-
+//=============================================
 //
 function User(name, pwd) {
     this.name = name
@@ -168,7 +168,7 @@ function User(name, pwd) {
 //用new初始化对象
 var user = new User('a', 'b')
 console.log(user.name)
-
+//=============================================
 
 //高阶函数
 var sort1 = [3, 4, 1, 2, 5]
@@ -185,7 +185,7 @@ sort1.sort(
     }
 )
 console.log(sort1)
-
+//=============================================
 var strs = ['aa', 'bc', 'de']
 
 var strs1 = strs.map(
@@ -194,7 +194,7 @@ var strs1 = strs.map(
     }
 )
 console.log(strs1)
-
+//=============================================
 
 function buildStr(n, callback) {
     var res = ""
@@ -210,11 +210,11 @@ var alphabet = buildStr(26, function (i) {
 
 console.log(alphabet)
 
-var randomStr = buildStr(10,function(i){
-    return String.fromCharCode(Math.floor(Math.random()*26)+aCode)
+var randomStr = buildStr(10, function (i) {
+    return String.fromCharCode(Math.floor(Math.random() * 26) + aCode)
 })
 console.log(randomStr)
-
+//=============================================
 
 // apply()和call()的真正用武之地是能够扩充函数赖以运行的作用域
 this.firstName = "diz";
@@ -231,4 +231,133 @@ function sum(num1, num2) {
     return num1 + num2;
 }
 console.log(sum.call(null, 10, 10)); //20
-console.log(sum.apply(null,[10,20])); //30
+console.log(sum.apply(null, [10, 20])); //30
+//=============================================
+
+//可变参数 arguments
+function average() {
+    for (var i = 0, n = arguments.length, sum = 0; i < n; i++) {
+        sum += arguments[i]
+    }
+    return sum / n
+}
+
+console.log(average(1, 3, 5, 1))
+//=============================================
+//永远不要修改arguments对象
+function callMethod(obj, method) {
+    //指定slice索引位置为2
+    var args = [].slice.call(arguments, 2)
+    return obj[method].apply(obj, args)
+}
+var obj = {
+    add: function () {
+        for (var i = 0, n = arguments.length, sum = 0; i < n; i++) {
+            sum += arguments[i]
+        }
+        return sum
+    }
+}
+console.log(callMethod(obj, 'add', 17, 25, 3))
+
+//=============================================
+//迭代器用法
+function values() {
+    var i = 0, n = arguments.length, a = arguments
+    return{
+        hasNext: function () {
+            return i < n;
+        },
+        next: function () {
+            if (i >= n) {
+                throw new Error('end of iteration')
+            }
+            return a[i++]
+        }
+    }
+}
+var it = values(1, 2, 3)
+while (it.hasNext()) {
+    console.log(it.next())
+}
+
+
+//=============================================
+
+
+//=============================================
+
+
+//=============================================
+
+
+//=============================================
+
+
+//=============================================
+
+
+//=============================================
+
+
+//=============================================
+
+
+//=============================================
+
+
+//=============================================
+
+
+//=============================================
+
+
+//=============================================
+
+
+//=============================================
+
+
+//=============================================
+
+
+//=============================================
+
+
+//=============================================
+
+
+//=============================================
+
+
+//=============================================
+
+
+//=============================================
+
+
+//=============================================
+
+
+//=============================================
+
+
+//=============================================
+
+
+//=============================================
+
+
+//=============================================
+
+
+//=============================================
+
+
+//=============================================
+
+
+//=============================================
+
+
+//=============================================
