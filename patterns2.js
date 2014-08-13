@@ -294,6 +294,10 @@ var buffer = {
 var source = ['a','-','1']
 //并不是每个高阶函数都会提供其回调函数的接收者，即下面注释的语句，forEach提供了接收者，如果某个高阶函数没有提供接收者，那么用注释语句的后面一条语句 bind()
 //source.forEach(buffer.add,buffer)
+//常用写法，可以用bind()方法简化该种写法
+//source.forEach(function(s){
+//    buffer.add(s)
+//})
 source.forEach(buffer.add.bind(buffer))
 var ret = buffer.join()
 console.log(ret)
